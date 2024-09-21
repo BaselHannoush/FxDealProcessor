@@ -1,0 +1,16 @@
+services:
+  db:
+    image: fxdealprocessor:1.0
+    environment:
+      CONNECTION_STRING: jdbc:mysql://localhost:3306/my_database
+      DB_USER: root
+      DB_PASSWORD: Basel@1234
+    ports:
+      - "8080:8080"
+
+  app:
+    build: .
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
