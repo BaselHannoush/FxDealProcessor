@@ -1,4 +1,4 @@
-FROM openjdk:11
+FROM openjdk:17
 LABEL authors="baselhannoush"
 VOLUME /tmp
 COPY target/FxDealProcessor-1.0-SNAPSHOT.jar app.jar

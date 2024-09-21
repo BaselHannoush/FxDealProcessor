@@ -2,7 +2,7 @@ services:
   my-app:
     image: fxdealprocessor:1.0
     environment:
-      CONNECTION_STRING: jdbc:mysql://localhost:3306/my_database
+      CONNECTION_STRING: jdbc:mysql://localhost:3307/my_database
       DB_USER: root
       DB_PASSWORD: Basel@1234
     ports:
@@ -13,9 +13,18 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: Basel@1234
       MYSQL_DATABASE: my_database
+
+    healthcheck:
+        test: [ "CMD", "mysqladmin", "ping", "-h", "localhost" ]
+        interval: 30s
+        timeout: 10s
+        retries: 5
     ports:
       - "3307:3306"
     volumes:
       - mysql-datastore:/var/lib/mysql
+
+
 volumes:
   mysql-datastore:
+
